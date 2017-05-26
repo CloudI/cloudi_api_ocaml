@@ -4,10 +4,14 @@
 OCAMLFLAGS=-safe-string -w @A
 
 all: \
-     erlang.cmi \
-     cloudi.cmi \
-     erlang.cmx \
-     cloudi.cmx
+     cloudi.cmxa
+
+cloudi.cmxa: \
+             erlang.cmi \
+             cloudi.cmi \
+             erlang.cmx \
+             cloudi.cmx
+	ocamlopt $(OCAMLFLAGS) -a erlang.cmx cloudi.cmx -o $@
 
 doc: \
      erlang.cmi \
@@ -16,7 +20,7 @@ doc: \
 	ocamldoc -verbose -d doc $(OCAMLFLAGS) -html *.ml *.mli
 
 clean:
-	rm -f *.cmi *.cmx *.o 
+	rm -f *.cmi *.cmx *.o cloudi.cmxa cloudi.a
 
 %.cmi: %.mli
 	ocamlc $(OCAMLFLAGS) -o $@ -c $<
