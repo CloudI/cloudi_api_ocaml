@@ -11,3 +11,13 @@ Build
     opam remove cloudi --verbose
     opam pin remove cloudi
 
+Author
+------
+
+Michael Truog (mjtruog [at] gmail (dot) com)
+
+License
+-------
+
+MIT License
+
