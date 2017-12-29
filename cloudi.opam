@@ -1,6 +1,6 @@
 opam-version: "1.2"
 name: "cloudi"
-version: "1.7.2"
+version: "1.7.3"
 maintainer: "Michael Truog <mjtruog@gmail.com>"
 authors: "Michael Truog <mjtruog@gmail.com>"
 homepage: "http://cloudi.org/"
@@ -13,5 +13,7 @@ build: [
 remove: ["ocamlfind" "remove" "cloudi"]
 depends: [
   "ocamlfind" {build}
+  "base-unix"
+  ("num" | "base-num")
 ]
 available: [ ocaml-version >= "4.03.0" ]
