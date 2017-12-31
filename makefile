@@ -7,7 +7,7 @@ OCAMLDEP ?= ocamldep
 OCAMLMKLIB ?= ocamlmklib
 OCAMLDOC ?= ocamldoc
 OCAMLFLAGS = -safe-string -w @A
-STDLIBDIR=$(shell $(OCAMLC) -where)
+STDLIBDIR = $(shell $(OCAMLC) -where)
 OCAMLDEPS_NUM = \
     arith_flags.cmi \
     arith_flags.cmx \
