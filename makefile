@@ -7,6 +7,7 @@ OCAMLDEP ?= ocamldep
 OCAMLMKLIB ?= ocamlmklib
 OCAMLDOC ?= ocamldoc
 OCAMLFLAGS = -safe-string -w @A
+STDLIBDIR=$(shell $(OCAMLC) -where)
 OCAMLDEPS_NUM = \
     arith_flags.cmi \
     arith_flags.cmx \
@@ -29,30 +30,35 @@ OCAMLDEPS_NUM = \
 all: \
      cloudi.cmxa
 
-cloudi.cmxa: nums.cmxa \
+cloudi.cmxa: \
+             dependency_num \
              erlang.cmi \
              cloudi.cmi \
              erlang.cmx \
              cloudi.cmx
 	$(OCAMLOPT) $(OCAMLFLAGS) -a erlang.cmx cloudi.cmx -o $@
 
-nums.cmxa:
-	cd external/num-1.1/src && \
-    $(MAKE) OCAMLC="$(OCAMLC)" \
-            OCAMLOPT="$(OCAMLOPT)" \
-            OCAMLDEP="$(OCAMLDEP)" \
-            OCAMLMKLIB="$(OCAMLMKLIB)" \
-            nums.cmxa libnums.a && \
-    cp $(OCAMLDEPS_NUM) ../../..
+dependency_num:
+	test -f $(STDLIBDIR)/nums.cmxa || \
+    (cd external/num-1.1/src && \
+     $(MAKE) OCAMLC="$(OCAMLC)" \
+             OCAMLOPT="$(OCAMLOPT)" \
+             OCAMLDEP="$(OCAMLDEP)" \
+             OCAMLMKLIB="$(OCAMLMKLIB)" \
+             nums.cmxa libnums.a && \
+     cp $(OCAMLDEPS_NUM) ../../..)
+	touch $@
 
 doc: \
+     dependency_num \
      erlang.cmi \
      cloudi.cmi
 	mkdir -p doc
 	$(OCAMLDOC) -verbose -d doc $(OCAMLFLAGS) -html *.ml *.mli
 
 clean:
-	rm -f *.cmi *.cmx *.o cloudi.cmxa cloudi.a $(OCAMLDEPS_NUM)
+	rm -f *.cmi *.cmx *.o cloudi.cmxa cloudi.a \
+          dependency_num $(OCAMLDEPS_NUM)
 	cd external/num-1.1/src && $(MAKE) clean
 
 %.cmi: %.mli
