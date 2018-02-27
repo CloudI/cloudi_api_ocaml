@@ -20,17 +20,15 @@
 &nbsp;</div>
 <h1>Module <a href="type_Erlang.html">Erlang</a></h1>
 
-<pre><span id="MODULEErlang"><span class="keyword">module</span> Erlang</span>: <code class="code">sig</code> <a href="Erlang.html">..</a> <code class="code">end</code></pre><div class="info module top">
-<div class="info-desc">
-<p>Erlang Binary Term Format Encoding/Decoding</p>
-</div>
+<pre><span class="keyword">module</span> Erlang: <code class="code">sig</code> <a href="Erlang.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Erlang Binary Term Format Encoding/Decoding<br>
 </div>
 <hr width="100%">
 
-<pre><span id="MODULEPid"><span class="keyword">module</span> <a href="Erlang.Pid.html">Pid</a></span>: <code class="code">sig</code> <a href="Erlang.Pid.html">..</a> <code class="code">end</code></pre>
-<pre><span id="MODULEPort"><span class="keyword">module</span> <a href="Erlang.Port.html">Port</a></span>: <code class="code">sig</code> <a href="Erlang.Port.html">..</a> <code class="code">end</code></pre>
-<pre><span id="MODULEReference"><span class="keyword">module</span> <a href="Erlang.Reference.html">Reference</a></span>: <code class="code">sig</code> <a href="Erlang.Reference.html">..</a> <code class="code">end</code></pre>
-<pre><span id="MODULEFunction"><span class="keyword">module</span> <a href="Erlang.Function.html">Function</a></span>: <code class="code">sig</code> <a href="Erlang.Function.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Erlang.Pid.html">Pid</a>: <code class="code">sig</code> <a href="Erlang.Pid.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Erlang.Port.html">Port</a>: <code class="code">sig</code> <a href="Erlang.Port.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Erlang.Reference.html">Reference</a>: <code class="code">sig</code> <a href="Erlang.Reference.html">..</a> <code class="code">end</code></pre>
+<pre><span class="keyword">module</span> <a href="Erlang.Function.html">Function</a>: <code class="code">sig</code> <a href="Erlang.Function.html">..</a> <code class="code">end</code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -162,20 +160,14 @@
 
 
 <pre><span id="VALbinary_to_term"><span class="keyword">val</span> binary_to_term</span> : <code class="type">string -> (<a href="Erlang.html#TYPEt">t</a>, string) Pervasives.result</code></pre><div class="info ">
-<div class="info-desc">
-<p>Decode Erlang terms within binary data into OCaml types</p>
-</div>
+Decode Erlang terms within binary data into OCaml types<br>
 </div>
 
 <pre><span id="VALterm_to_binary"><span class="keyword">val</span> term_to_binary</span> : <code class="type"><a href="Erlang.html#TYPEt">t</a> -> (string, string) Pervasives.result</code></pre><div class="info ">
-<div class="info-desc">
-<p>Encode OCaml types into Erlang terms in binary data</p>
-</div>
+Encode OCaml types into Erlang terms in binary data<br>
 </div>
 
 <pre><span id="VALt_to_string"><span class="keyword">val</span> t_to_string</span> : <code class="type"><a href="Erlang.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-<div class="info-desc">
-<p>Convert the OCaml Erlang type to a string</p>
-</div>
+Convert the OCaml Erlang type to a string<br>
 </div>
 </body></html>
