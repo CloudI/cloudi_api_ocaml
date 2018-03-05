@@ -3,6 +3,7 @@ lib: [
   "erlang.cmi"
   "cloudi.cmi"
   "cloudi.cmxa"
+  "cloudi.a"
   "cloudi.cma"
 ]
 doc: [
