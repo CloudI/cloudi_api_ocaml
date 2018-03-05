@@ -10,9 +10,7 @@ dev-repo: "https://github.com/CloudI/cloudi_api_ocaml.git"
 build: [
   [make]
 ]
-remove: ["ocamlfind" "remove" "cloudi"]
 depends: [
-  "ocamlfind" {build}
   "base-unix"
 ]
 available: [ ocaml-version >= "4.03.0" ]
