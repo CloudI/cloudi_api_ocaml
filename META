@@ -1,0 +1,6 @@
+name = "cloudi"
+version = "1.7.3"
+description = "OCaml CloudI API"
+requires = "unix"
+archive(byte) = "cloudi.cma"
+archive(native) = "cloudi.cmxa"

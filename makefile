@@ -28,7 +28,8 @@ OCAMLDEPS_NUM = \
     nums.cmxa
 
 all: \
-     cloudi.cmxa
+     cloudi.cmxa \
+     cloudi.cma
 
 cloudi.cmxa: \
              dependency_num \
@@ -37,6 +38,14 @@ cloudi.cmxa: \
              erlang.cmx \
              cloudi.cmx
 	$(OCAMLOPT) $(OCAMLFLAGS) -a erlang.cmx cloudi.cmx -o $@
+
+cloudi.cma: \
+            dependency_num \
+            erlang.cmi \
+            cloudi.cmi \
+            erlang.cmo \
+            cloudi.cmo
+	$(OCAMLC) $(OCAMLFLAGS) -a erlang.cmo cloudi.cmo -o $@
 
 dependency_num:
 	test -f $(STDLIBDIR)/nums.cmxa || \
@@ -57,7 +66,7 @@ doc: \
 	$(OCAMLDOC) -verbose -d doc $(OCAMLFLAGS) -html *.ml *.mli
 
 clean:
-	rm -f *.cmi *.cmx *.o cloudi.cmxa cloudi.a \
+	rm -f *.cmi *.cmx *.cmo *.o cloudi.cmxa cloudi.cma cloudi.a \
           dependency_num $(OCAMLDEPS_NUM)
 	cd external/num-1.1/src && $(MAKE) clean
 
@@ -66,4 +75,7 @@ clean:
 
 %.cmx: %.ml
 	$(OCAMLOPT) $(OCAMLFLAGS) -o $@ -c $<
+
+%.cmo: %.ml
+	$(OCAMLC) $(OCAMLFLAGS) -o $@ -c $<
 
