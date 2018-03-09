@@ -25,7 +25,8 @@ OCAMLDEPS_NUM = \
     ratio.cmx \
     libnums.a \
     nums.a \
-    nums.cmxa
+    nums.cmxa \
+    nums.cma
 
 all: \
      cloudi.cmxa \
