@@ -2,6 +2,8 @@ lib: [
   "META"
   "erlang.cmi"
   "cloudi.cmi"
+  "erlang.cmx"
+  "cloudi.cmx"
   "cloudi.cmxa"
   "cloudi.a"
   "cloudi.cma"
