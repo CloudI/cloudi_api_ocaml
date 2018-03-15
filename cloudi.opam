@@ -12,5 +12,6 @@ build: [
 ]
 depends: [
   "base-unix"
+  ("base-num" | "num")
 ]
 available: [ ocaml-version >= "4.03.0" ]
