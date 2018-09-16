@@ -55,7 +55,7 @@ dependency_num:
              OCAMLOPT="$(OCAMLOPT)" \
              OCAMLDEP="$(OCAMLDEP)" \
              OCAMLMKLIB="$(OCAMLMKLIB)" \
-             nums.cmxa libnums.a && \
+             nums.cmxa nums.cma libnums.a && \
      cp $(OCAMLDEPS_NUM) ../../..)
 	touch $@
 
