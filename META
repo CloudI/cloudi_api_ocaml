@@ -1,5 +1,5 @@
 name = "cloudi"
-version = "1.7.5"
+version = "1.8.0"
 description = "OCaml CloudI API"
 requires = "unix"
 archive(byte) = "cloudi.cma"
