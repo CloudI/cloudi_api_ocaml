@@ -40,7 +40,10 @@
 &nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">ReturnAsync</span><br>
 &nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">ForwardSync</span><br>
 &nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">ForwardAsync</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;api&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>s&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>s&nbsp;<span class="constructor">Cloudi</span>.<span class="constructor">Instance</span>.t,&nbsp;string)&nbsp;<span class="constructor">Stdlib</span>.result<br>
+&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Terminate</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;api&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?terminate_return_value:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>s&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>s&nbsp;<span class="constructor">Cloudi</span>.<span class="constructor">Instance</span>.t,&nbsp;string)&nbsp;<span class="constructor">Stdlib</span>.result<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;thread_count&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(int,&nbsp;string)&nbsp;<span class="constructor">Stdlib</span>.result<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;subscribe&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>s&nbsp;<span class="constructor">Cloudi</span>.<span class="constructor">Instance</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
@@ -123,4 +126,6 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;shutdown&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;?reason:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>s&nbsp;<span class="constructor">Cloudi</span>.<span class="constructor">Instance</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(unit,&nbsp;string)&nbsp;<span class="constructor">Stdlib</span>.result<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;info_key_value_parse&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string,&nbsp;string&nbsp;list)&nbsp;<span class="constructor">Stdlib</span>.<span class="constructor">Hashtbl</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;info_key_value_new&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?response:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(string,&nbsp;string&nbsp;list)&nbsp;<span class="constructor">Stdlib</span>.<span class="constructor">Hashtbl</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
 <span class="keyword">end</span></code></body></html>

@@ -142,7 +142,9 @@
 
 <pre><span id="EXCEPTIONForwardAsync"><span class="keyword">exception</span> ForwardAsync</span></pre>
 
-<pre><span id="VALapi"><span class="keyword">val</span> api</span> : <code class="type">int -> 's -> ('s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a>, string) Stdlib.result</code></pre><div class="info ">
+<pre><span id="EXCEPTIONTerminate"><span class="keyword">exception</span> Terminate</span></pre>
+
+<pre><span id="VALapi"><span class="keyword">val</span> api</span> : <code class="type">?terminate_return_value:bool -><br>       int -> 's -> ('s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a>, string) Stdlib.result</code></pre><div class="info ">
 <div class="info-desc">
 <p>creates an instance of the CloudI API</p>
 </div>
@@ -307,7 +309,13 @@
 
 <pre><span id="VALinfo_key_value_parse"><span class="keyword">val</span> info_key_value_parse</span> : <code class="type">string -> (string, string list) Stdlib.Hashtbl.t</code></pre><div class="info ">
 <div class="info-desc">
-<p>parses "text_pairs" in service request info</p>
+<p>decode service request info key/value data</p>
+</div>
+</div>
+
+<pre><span id="VALinfo_key_value_new"><span class="keyword">val</span> info_key_value_new</span> : <code class="type">?response:bool -> (string, string list) Stdlib.Hashtbl.t -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p>encode service response info key/value data</p>
 </div>
 </div>
 </body></html>
