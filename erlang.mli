@@ -5,7 +5,7 @@
 
   MIT License
 
-  Copyright (c) 2017-2019 Michael Truog <mjtruog at protonmail dot com>
+  Copyright (c) 2017-2023 Michael Truog <mjtruog at protonmail dot com>
 
   Permission is hereby granted, free of charge, to any person obtaining a
   copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@
 
  *)
 
-(** Erlang Binary Term Format Encoding/Decoding *)
+(** Erlang External Term Format Encoding/Decoding *)
 
 module Pid :
   sig
@@ -67,7 +67,7 @@ module Function :
 
 type t =
     OtpErlangInteger of int
-  | OtpErlangIntegerBig of Big_int.big_int
+  | OtpErlangIntegerBig of Big_int_Z.big_int
   | OtpErlangFloat of float
   | OtpErlangAtom of string
   | OtpErlangAtomUTF8 of string
@@ -93,6 +93,9 @@ val term_to_binary : t -> (string, string) result
 
 (** Convert the OCaml Erlang type to a string *)
 val t_to_string : t -> string
+
+(** Print a binary string *)
+val print_binary : string -> unit
 
 (**/**)
 (* begin section ignored by ocamldoc *)

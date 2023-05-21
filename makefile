@@ -8,32 +8,28 @@ OCAMLMKLIB ?= ocamlmklib
 OCAMLDOC ?= ocamldoc
 OCAMLFLAGS = -safe-string -w @A
 STDLIBDIR = $(shell $(OCAMLC) -where)
-OCAMLDEPS_NUM = \
-    arith_flags.cmi \
-    arith_flags.cmx \
-    arith_status.cmi \
-    arith_status.cmx \
-    big_int.cmi \
-    big_int.cmx \
-    int_misc.cmi \
-    int_misc.cmx \
-    nat.cmi \
-    nat.cmx \
-    num.cmi \
-    num.cmx \
-    ratio.cmi \
-    ratio.cmx \
-    libnums.a \
-    nums.a \
-    nums.cmxa \
-    nums.cma
+OCAMLDEPS_ZARITH = \
+    big_int_Z.cmi \
+    big_int_Z.cmx \
+    libzarith.a \
+    q.cmi \
+    q.cmx \
+    zarith.a \
+    zarith.cma \
+    zarith.cmxa \
+    zarith_top.cma \
+    zarith_top.cmi \
+    zarith_version.cmi \
+    zarith_version.cmx \
+    z.cmi \
+    z.cmx
 
 all: \
      cloudi.cmxa \
      cloudi.cma
 
 cloudi.cmxa: \
-             dependency_num \
+             dependency_zarith \
              erlang.cmi \
              cloudi.cmi \
              erlang.cmx \
@@ -41,35 +37,31 @@ cloudi.cmxa: \
 	$(OCAMLOPT) $(OCAMLFLAGS) -a erlang.cmx cloudi.cmx -o $@
 
 cloudi.cma: \
-            dependency_num \
+            dependency_zarith \
             erlang.cmi \
             cloudi.cmi \
             erlang.cmo \
             cloudi.cmo
 	$(OCAMLC) $(OCAMLFLAGS) -a erlang.cmo cloudi.cmo -o $@
 
-dependency_num:
-	test -f $(STDLIBDIR)/nums.cmxa || \
-    (cd external/num-1.1/src && \
-     $(MAKE) OCAMLC="$(OCAMLC)" \
-             OCAMLOPT="$(OCAMLOPT)" \
-             OCAMLDEP="$(OCAMLDEP)" \
-             OCAMLMKLIB="$(OCAMLMKLIB)" \
-             nums.cmxa nums.cma libnums.a && \
-     cp $(OCAMLDEPS_NUM) ../../..)
+dependency_zarith:
+	(cd external/zarith-1.12 && \
+     ./configure && \
+     $(MAKE) && \
+     cp $(OCAMLDEPS_ZARITH) ../..)
 	touch $@
 
 doc: \
-     dependency_num \
+     dependency_zarith \
      erlang.cmi \
      cloudi.cmi
 	mkdir -p doc
 	$(OCAMLDOC) -verbose -d doc $(OCAMLFLAGS) -html *.ml *.mli
 
 clean:
+	cd external/zarith-1.12 && $(MAKE) clean || exit 0
 	rm -f *.cmi *.cmx *.cmo *.o cloudi.cmxa cloudi.cma cloudi.a \
-          dependency_num $(OCAMLDEPS_NUM)
-	cd external/num-1.1/src && $(MAKE) clean
+          dependency_zarith $(OCAMLDEPS_ZARITH)
 
 %.cmi: %.mli
 	$(OCAMLC) $(OCAMLFLAGS) -o $@ -c $<

@@ -243,6 +243,12 @@
 </div>
 </div>
 
+<pre><span id="VALprocess_index_"><span class="keyword">val</span> process_index_</span> : <code class="type">unit -&gt; (int, string) Stdlib.result</code></pre><div class="info ">
+<div class="info-desc">
+<p>returns the 0-based index of this process in the service instance</p>
+</div>
+</div>
+
 <pre><span id="VALprocess_count"><span class="keyword">val</span> process_count</span> : <code class="type">'s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>returns the current process count based on the service configuration</p>
@@ -256,7 +262,21 @@
 </div>
 </div>
 
+<pre><span id="VALprocess_count_max_"><span class="keyword">val</span> process_count_max_</span> : <code class="type">unit -&gt; (int, string) Stdlib.result</code></pre><div class="info ">
+<div class="info-desc">
+<p>returns the count_process_dynamic maximum count
+    based on the service configuration</p>
+</div>
+</div>
+
 <pre><span id="VALprocess_count_min"><span class="keyword">val</span> process_count_min</span> : <code class="type">'s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>returns the count_process_dynamic minimum count
+    based on the service configuration</p>
+</div>
+</div>
+
+<pre><span id="VALprocess_count_min_"><span class="keyword">val</span> process_count_min_</span> : <code class="type">unit -&gt; (int, string) Stdlib.result</code></pre><div class="info ">
 <div class="info-desc">
 <p>returns the count_process_dynamic minimum count
     based on the service configuration</p>
@@ -270,6 +290,13 @@
 </div>
 
 <pre><span id="VALtimeout_initialize"><span class="keyword">val</span> timeout_initialize</span> : <code class="type">'s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>returns the service initialization timeout
+     from the service configuration</p>
+</div>
+</div>
+
+<pre><span id="VALtimeout_initialize_"><span class="keyword">val</span> timeout_initialize_</span> : <code class="type">unit -&gt; (int, string) Stdlib.result</code></pre><div class="info ">
 <div class="info-desc">
 <p>returns the service initialization timeout
      from the service configuration</p>
@@ -291,6 +318,13 @@
 </div>
 
 <pre><span id="VALtimeout_terminate"><span class="keyword">val</span> timeout_terminate</span> : <code class="type">'s <a href="Cloudi.Instance.html#TYPEt">Instance.t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>returns the service termination timeout
+    based on the service configuration</p>
+</div>
+</div>
+
+<pre><span id="VALtimeout_terminate_"><span class="keyword">val</span> timeout_terminate_</span> : <code class="type">unit -&gt; (int, string) Stdlib.result</code></pre><div class="info ">
 <div class="info-desc">
 <p>returns the service termination timeout
     based on the service configuration</p>
