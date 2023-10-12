@@ -1,6 +1,8 @@
 `cloudi_api_ocaml`
 ==================
 
+[![opam Package Version](https://img.shields.io/github/v/tag/CloudI/cloudi_api_ocaml?label=opam)](https://opam.ocaml.org/packages/cloudi/)
+
 OCaml [CloudI API](https://cloudi.org/api.html#1_Intro)
 
 Build

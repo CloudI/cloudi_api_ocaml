@@ -6,8 +6,8 @@ OCAMLOPT ?= ocamlopt
 OCAMLDEP ?= ocamldep
 OCAMLMKLIB ?= ocamlmklib
 OCAMLDOC ?= ocamldoc
-OCAMLFLAGS = -safe-string -w @A
-STDLIBDIR = $(shell $(OCAMLC) -where)
+OCAMLFLAGS = -safe-string -w @A -I +str -I +unix
+OCAMLDEPS_ZARITH_VERSION = 1.13
 OCAMLDEPS_ZARITH = \
     big_int_Z.cmi \
     big_int_Z.cmx \
@@ -25,6 +25,7 @@ OCAMLDEPS_ZARITH = \
     z.cmx
 
 all: \
+     dependency_native_code \
      cloudi.cmxa \
      cloudi.cma
 
@@ -44,8 +45,12 @@ cloudi.cma: \
             cloudi.cmo
 	$(OCAMLC) $(OCAMLFLAGS) -a erlang.cmo cloudi.cmo -o $@
 
+dependency_native_code: $(OCAMLOPT)
+	$(OCAMLOPT) -v
+	touch $@
+
 dependency_zarith:
-	(cd external/zarith-1.12 && \
+	(cd external/zarith-$(OCAMLDEPS_ZARITH_VERSION) && \
      ./configure && \
      $(MAKE) && \
      cp $(OCAMLDEPS_ZARITH) ../..)
@@ -59,8 +64,9 @@ doc: \
 	$(OCAMLDOC) -verbose -d doc $(OCAMLFLAGS) -html *.ml *.mli
 
 clean:
-	cd external/zarith-1.12 && $(MAKE) clean || exit 0
+	cd external/zarith-$(OCAMLDEPS_ZARITH_VERSION) && $(MAKE) clean || exit 0
 	rm -f *.cmi *.cmx *.cmo *.o cloudi.cmxa cloudi.cma cloudi.a \
+          dependency_native_code \
           dependency_zarith $(OCAMLDEPS_ZARITH)
 
 %.cmi: %.mli
