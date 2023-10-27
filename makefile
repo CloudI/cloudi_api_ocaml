@@ -45,7 +45,7 @@ cloudi.cma: \
             cloudi.cmo
 	$(OCAMLC) $(OCAMLFLAGS) -a erlang.cmo cloudi.cmo -o $@
 
-dependency_native_code: $(OCAMLOPT)
+dependency_native_code:
 	$(OCAMLOPT) -v
 	touch $@
 
